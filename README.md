@@ -3,11 +3,11 @@ Ad-less, *STATIC*, pirated-movie client.
 
 ## Hosting
 
-Copy the webapp directory, and host with any static hosting (Glitch, Render, Cloudflare Pages are good)
+Copy the webapp directory (or make webapp the root directory when hosting), and host with any static hosting (Glitch, Render, Cloudflare Pages are good)
 
-Or, use the main Cloudflare Pages site: 
+Or, use the main Cloudflare Pages site to try this out: 
 
-COMING.. "SOON"
+https://watchium.pages.dev/
 
 > <small>Important: the site NEEDS HTTPS! Otherwise the site won't work without manual reconfiguation (changing default APIs to http) and any Webtor proxy will NOT WORK AT ALL!</small>
 
