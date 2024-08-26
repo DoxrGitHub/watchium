@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b7e79643d9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <h1>Watchium</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search movies...">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="settings-container">
+                <button id="settingsButton" class="settings-btn"><i class="fas fa-cog"></i></button>
+            </div>
+        </div>
+        <div class="genre-container">
+            <div id="genreFilter" class="genre-filter"></div>
+        </div>
+    </header>
+    <main>
+        <div id="movieList" class="movie-grid"></div>
+        <div id="pagination">
+            <button id="prevPage" class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+            <span id="currentPage"></span>
+            <button id="nextPage" class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+    <footer>
+        <p>Watchium 1.0.0</p>
+        <p>Important Note: I have not reviewed every movie, and a lot of them are rated R; please proceed with caution. If you want to hide/unblock Watchium, use a proxy (see settings).</a>.</p>
+    </footer>
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <label for="apiDomain"><a href="">YTS API proxy</a> (end with <code>/api/v2/</code>):</label>
+            <input type="text" id="apiDomain" placeholder="Enter API url">
+            <label for="webtor">YTS API (end with <code>/api/v2/</code>):</label>
+            <input type="text" id="webtor" placeholder="Enter Webtor Instance">
+            <button id="saveSettings">Save</button>
+            <button id="closeSettings">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

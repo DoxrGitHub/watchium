@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchium Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b7e79643d9.js" crossorigin="anonymous"></script>
+</head>
+<body class="player-page">
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-film"></i> Watchium Player</h1>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Movies</a>
+        </div>
+    </header>
+    <main>
+        <section id="playerSection">
+            <div class="player-container">
+                <div id="player"></div>
+                <small style="left: 50%; position: absolute; transform: translateX(-50%); color: red;">Movies may take a while to load.</small>
+            </div>
+        </section>
+        <section id="movieInfo" class="movie-info">
+            <!-- Movie information will be dynamically inserted here -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Watchium. Licensed under the AGPL.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@webtor/embed-sdk-js/dist/index.min.js" charset="utf-8" async></script>
+    <script src="player.js"></script>
+</body>
+</html>
