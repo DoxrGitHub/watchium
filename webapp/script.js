@@ -51,7 +51,7 @@ function displayMovies(movies) {
         const movieCard = document.createElement('div');
         movieCard.className = 'movie-card';
         movieCard.innerHTML = `
-            <img src="${console.log(API_BASE_URL + movie.medium_cover_image.substring('https://yts.mx'.length))}" alt="${movie.title}">
+            <img src="${API_BASE_URL + movie.medium_cover_image.substring('https://yts.mx'.length)}" alt="${movie.title}">
             <div class="movie-info">
                 <h3>${movie.title}</h3>
                 <p>Year: ${movie.year}</p>

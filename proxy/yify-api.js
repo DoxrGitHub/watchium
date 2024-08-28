@@ -26,22 +26,31 @@ app.get("/api/v2/movie_details.json", (req, res) => {
   })
 });
 
-app.get('/assets/images/movies/*', (req, res) => {
-  const fullurl = `https://yts.mx/assets/images/movies/${req.params[0]}`;
+app.get('/assets/images/movies/*', async (req, res) => {
+  const imagePath = req.params[0];
+  const imageUrl = `https://yts.mx/assets/images/movies/${imagePath}`;
 
-  fetch(fullurl)
-   .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      res.setHeader('Content-Type', response.headers.get('content-type'));
-      response.body.pipe(res);
-    })
-   .catch(err => {
-      res.status(500).send(err.message);
-    });
+  try {
+    const response = await fetch(imageUrl);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const contentType = response.headers.get("content-type");
+    res.setHeader("Content-Type", contentType);
+    let chunks = [];
+    for await (const chunk of response.body) {
+        chunks.push(chunk);
+    }
+    const body = Buffer.concat(chunks);
+    res.write(body);
+    res.end();
+} catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server error');
+}
 });
 
-app.listen(3000, () => {
-  console.log("Project is ready!")
-})
+
+
+const PORT = process.env.PORT || 25541;
+app.listen(PORT, () => {
+  console.log(`yts ready`);
+});
