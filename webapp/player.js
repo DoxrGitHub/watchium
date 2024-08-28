@@ -1,6 +1,10 @@
-let API_BASE_URL = localStorage.getItem('apiDomain') || 'https://yts.mx/api/v2/';
+let API_BASE_URL = removeTrailingSlash(localStorage.getItem('apiDomain')) || 'https://yts.mx';
 const player = document.getElementById('player');
 const movieInfo = document.getElementById('movieInfo');
+
+function removeTrailingSlash(url) {
+    return url.replace(/\/$/, '');
+}
 
 function getMovieIdFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -8,7 +12,7 @@ function getMovieIdFromUrl() {
 }
 
 function fetchMovieDetails(movieId) {
-    const url = `${API_BASE_URL}movie_details.json?movie_id=${movieId}&with_images=true&with_cast=true`;
+    const url = `${API_BASE_URL}/api/v2/movie_details.json?movie_id=${movieId}&with_images=true&with_cast=true`;
 
     fetch(url)
         .then(response => response.json())

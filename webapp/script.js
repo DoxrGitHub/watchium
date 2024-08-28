@@ -1,5 +1,5 @@
 // script.js
-let API_BASE_URL = localStorage.getItem('apiDomain') || 'https://yts.mx/api/v2/';
+let API_BASE_URL = removeTrailingSlash(localStorage.getItem('apiDomain')) || 'https://yts.mx';
 let currentPage = 1;
 let currentGenre = '';
 const movieList = document.getElementById('movieList');
@@ -9,6 +9,11 @@ const prevPageButton = document.getElementById('prevPage');
 const nextPageButton = document.getElementById('nextPage');
 const currentPageSpan = document.getElementById('currentPage');
 const genreFilter = document.getElementById('genreFilter');
+
+function removeTrailingSlash(url) {
+    if (url == null) return null;
+    return url.replace(/\/$/, '');
+}
 
 searchButton.addEventListener('click', () => {
     currentPage = 1;
@@ -29,7 +34,7 @@ nextPageButton.addEventListener('click', () => {
 
 function fetchMovies() {
     const searchTerm = searchInput.value;
-    const url = `${API_BASE_URL}list_movies.json?limit=20&page=${currentPage}&query_term=${searchTerm}&genre=${currentGenre}`;
+    const url = `${API_BASE_URL}/api/v2/list_movies.json?limit=20&page=${currentPage}&query_term=${searchTerm}&genre=${currentGenre}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -46,7 +51,7 @@ function displayMovies(movies) {
         const movieCard = document.createElement('div');
         movieCard.className = 'movie-card';
         movieCard.innerHTML = `
-            <img src="${movie.medium_cover_image}" alt="${movie.title}">
+            <img src="${console.log(API_BASE_URL + movie.medium_cover_image.substring('https://yts.mx'.length))}" alt="${movie.title}">
             <div class="movie-info">
                 <h3>${movie.title}</h3>
                 <p>Year: ${movie.year}</p>
@@ -69,7 +74,7 @@ function updatePagination(totalMovies) {
 }
 
 function setupGenreFilter() {
-    const genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'];
+    const genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'];
     genres.forEach(genre => {
         const button = document.createElement('button');
         button.className = 'genre-btn';

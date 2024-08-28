@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watchium</title>
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b7e79643d9.js" crossorigin="anonymous"></script>
@@ -41,9 +43,9 @@
     <div id="settingsModal" class="modal">
         <div class="modal-content">
             <h2>Settings</h2>
-            <label for="apiDomain"><a href="">YTS API proxy</a> (end with <code>/api/v2/</code>):</label>
-            <input type="text" id="apiDomain" placeholder="Enter API url">
-            <label for="webtor">YTS API (end with <code>/api/v2/</code>):</label>
+            <label for="apiDomain"><a href="https://github.com/DoxrGitHub/watchium/tree/main/proxy">YIFY proxy</a> (include <code>https://</code>):</label>
+            <input type="text" id="apiDomain" placeholder="Enter docmain">
+            <label for="webtor">Player Proxy (bare server):</label>
             <input type="text" id="webtor" placeholder="Enter Webtor Instance">
             <button id="saveSettings">Save</button>
             <button id="closeSettings">Close</button>

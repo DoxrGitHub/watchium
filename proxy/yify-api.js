@@ -26,6 +26,22 @@ app.get("/api/v2/movie_details.json", (req, res) => {
   })
 });
 
+app.get('/assets/images/movies/*', (req, res) => {
+  const fullurl = `https://yts.mx/assets/images/movies/${req.params[0]}`;
+
+  fetch(fullurl)
+   .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      res.setHeader('Content-Type', response.headers.get('content-type'));
+      response.body.pipe(res);
+    })
+   .catch(err => {
+      res.status(500).send(err.message);
+    });
+});
+
 app.listen(3000, () => {
   console.log("Project is ready!")
 })
